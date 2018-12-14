@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 
-@RestController
+@RestController("covrController")
 final class CovrController {
 
 	@GetMapping("/")
@@ -22,6 +24,11 @@ final class CovrController {
 
 		return newItem;
 
+	}
+
+	@GetMapping("/time/")
+	String getTime() {
+		return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
 	}
 }
 
